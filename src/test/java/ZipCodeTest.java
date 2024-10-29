@@ -13,9 +13,9 @@ public class ZipCodeTest {
         browser.get("https://www.sharelane.com/cgi-bin/register.py");
         browser.findElement(By.name("zip_code")).sendKeys("12345");
         browser.findElement(By.cssSelector("[value = Continue]")).click();
-        String correctPage = "https://www.sharelane.com/cgi-bin/register.py?page=1&zip_code=12345";
-        Assert.assertEquals(correctPage, browser.getCurrentUrl());
-        browser.close();
+        boolean isDisplayed = browser.findElement(By.cssSelector("[value = Register]")).isDisplayed();
+        Assert.assertTrue(isDisplayed);
+        browser.quit();
     }
 
     @Test
